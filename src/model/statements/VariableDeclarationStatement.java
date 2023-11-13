@@ -31,4 +31,9 @@ public class VariableDeclarationStatement implements IStatement {
 
         return state;
     }
+
+    @Override
+    public String toString() {
+        return "(Decl " + this.name + ")";
+    }
 }

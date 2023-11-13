@@ -21,14 +21,19 @@ public class Repository implements IRepository{
     }
 
     @Override
+    public void add(ProgramState programState) {
+        programStateList.add(programState);
+    }
+
+    @Override
+    public void logProgramState() {
+        
+    }
+
+    @Override
     public String toString() {
         return "Repository{" +
                 "programStateList=" + programStateList +
                 '}';
-    }
-
-    @Override
-    public void add(ProgramState programState) {
-        programStateList.add(programState);
     }
 }

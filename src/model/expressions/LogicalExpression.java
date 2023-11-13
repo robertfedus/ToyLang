@@ -1,56 +1,57 @@
 package model.expressions;
 
 import model.exceptions.ToyException;
-import model.types.IntType;
+import model.types.BoolType;
 import model.values.BoolValue;
-import model.values.IntValue;
 import model.values.Value;
 import utils.collections.ToyIDictionary;
+
+import java.util.Objects;
 
 public class LogicalExpression implements Expression {
     Expression left;
     Expression right;
     String operator; // "and" - logical and, "or" - logical or
 
+    public LogicalExpression(Expression left, Expression right, String operator) {
+        this.left = left;
+        this.right = right;
+        this.operator = operator;
+    }
+
     @Override
     public Value eval(ToyIDictionary<String, Value> symbolTable) throws ToyException {
         Value leftValue, rightValue;
+        leftValue = left.eval(symbolTable);
 
-        leftValue = this.left.eval(symbolTable);
+        if(leftValue.getType().equals(new BoolType())) {
+            rightValue = right.eval(symbolTable);
 
-        if (leftValue.getType().equals(new IntType())) {
-            rightValue = this.right.eval(symbolTable);
+            if(rightValue.getType().equals(new BoolType())) {
+                BoolValue booleanLeftValue = (BoolValue)leftValue;
+                BoolValue booleanRightValue = (BoolValue)rightValue;
 
-            if (rightValue.getType().equals(new IntType())) {
-                IntValue intLeft = (IntValue)leftValue;
-                IntValue intRight = (IntValue)rightValue;
+                boolean leftExpressionValue,rightExpressionValue;
 
-                int numberLeft, numberRight;
+                leftExpressionValue = booleanLeftValue.getValue();
+                rightExpressionValue = booleanRightValue.getValue();
 
-                numberLeft = intLeft.getValue();
-                numberRight = intRight.getValue();
-
-                switch (this.operator) {
-                    case "<" :
-                        return new BoolValue(numberLeft < numberRight);
-                    case "<=" :
-                        return new BoolValue (numberLeft <= numberRight);
-                    case ">" :
-                        return new BoolValue(numberLeft > numberRight);
-                    case ">=" :
-                        return new BoolValue(numberLeft >= numberRight);
-                    case "==" :
-                        return new BoolValue(intLeft.equals(intRight));
-                    case "!=" :
-                        return new BoolValue(!intLeft.equals(intRight));
+                if(Objects.equals(operator, "and")) {
+                    return new BoolValue(leftExpressionValue && rightExpressionValue);
                 }
-            } else {
-                throw new ToyException("Second operand is not an integer.");
+                else if(Objects.equals(operator, "or")) {
+                    return new BoolValue(leftExpressionValue || rightExpressionValue);
+                }
+                else {
+                    throw new ToyException("Invalid operator.");
+                }
             }
-        } else {
-            throw new ToyException("First operand is not an integer.");
+            else {
+                throw new ToyException("Invalid operator.");
+            }
         }
-
-        return new BoolValue(false);
+        else {
+            throw new ToyException("Invalid operand.");
+        }
     }
 }
