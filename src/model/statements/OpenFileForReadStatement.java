@@ -35,6 +35,7 @@ public class OpenFileForReadStatement implements IStatement {
         if (fileTable.isDefined(stringValue)) {
             throw new ToyException("File " + stringValue.getValue() + " was already opened.");
         }
+
         try {
             Reader reader = new FileReader(stringValue.getValue());
             BufferedReader bufferedReader = new BufferedReader(reader);

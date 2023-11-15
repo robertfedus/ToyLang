@@ -22,6 +22,34 @@
 //import java.util.Scanner;
 //
 //public class View {
+//
+//
+//    // int a; int b; a = 2 + 3 * 5; b = a + 1; Print(b);
+//    private final IStatement ex2 =
+//
+//
+//    // bool a; int v; a = true; (If a Then v = 2 Else v = 3); Print(v)
+//    private final IStatement ex3 =
+//        new CompoundStatement(
+//                new VariableDeclarationStatement("a", new BoolType()),
+//                new CompoundStatement(
+//                        new VariableDeclarationStatement("v", new IntType()),
+//                        new CompoundStatement(
+//                                new AssignStatement("a", new ValueExpression(new BoolValue(true))),
+//                                new CompoundStatement(
+//                                        new IfStatement(
+//                                                new VariableExpression("a"),
+//                                                new AssignStatement("v",
+//                                                        new ValueExpression(
+//                                                                new IntValue(2)
+//                                                        )
+//                                                ), new AssignStatement("v", new ValueExpression(new IntValue(3)))
+//                                        ), new PrintStatement(new VariableExpression("v"))
+//                                )
+//                        )
+//                )
+//        );
+//
 //    //    string filePath;
 //    //    filePath="test.in";
 //    //    openFileForRead(filePath);

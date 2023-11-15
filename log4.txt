@@ -50,3 +50,512 @@ v -> 2
 Output
 2
 
+ExecutionStack
+Declare filePath
+filePath = test.in
+Open(filePath)
+Declare n
+Open(filePath)
+print(n);
+Open(filePath)
+print(n);
+Open(filePath)
+
+SymbolTable
+
+Output
+
+ExecutionStack
+filePath = test.in
+Open(filePath)
+Declare n
+Open(filePath)
+print(n);
+Open(filePath)
+print(n);
+Open(filePath)
+Declare filePath
+
+SymbolTable
+
+Output
+
+ExecutionStack
+filePath = test.in
+Open(filePath)
+Declare n
+Open(filePath)
+print(n);
+Open(filePath)
+print(n);
+Open(filePath)
+
+SymbolTable
+filePath -> 
+
+Output
+
+ExecutionStack
+Open(filePath)
+Declare n
+Open(filePath)
+print(n);
+Open(filePath)
+print(n);
+Open(filePath)
+filePath = test.in
+
+SymbolTable
+filePath -> 
+
+Output
+
+ExecutionStack
+Open(filePath)
+Declare n
+Open(filePath)
+print(n);
+Open(filePath)
+print(n);
+Open(filePath)
+
+SymbolTable
+filePath -> test.in
+
+Output
+
+ExecutionStack
+Declare n
+Open(filePath)
+print(n);
+Open(filePath)
+print(n);
+Open(filePath)
+Open(filePath)
+
+SymbolTable
+filePath -> test.in
+
+Output
+
+ExecutionStack
+Declare n
+Open(filePath)
+print(n);
+Open(filePath)
+print(n);
+Open(filePath)
+
+SymbolTable
+filePath -> test.in
+
+Output
+
+ExecutionStack
+Open(filePath)
+print(n);
+Open(filePath)
+print(n);
+Open(filePath)
+Declare n
+
+SymbolTable
+filePath -> test.in
+
+Output
+
+ExecutionStack
+Open(filePath)
+print(n);
+Open(filePath)
+print(n);
+Open(filePath)
+
+SymbolTable
+filePath -> test.in
+n -> 0
+
+Output
+
+ExecutionStack
+print(n);
+Open(filePath)
+print(n);
+Open(filePath)
+Open(filePath)
+
+SymbolTable
+filePath -> test.in
+n -> 0
+
+Output
+
+ExecutionStack
+print(n);
+Open(filePath)
+print(n);
+Open(filePath)
+
+SymbolTable
+filePath -> test.in
+n -> 15
+
+Output
+
+ExecutionStack
+Open(filePath)
+print(n);
+Open(filePath)
+print(n);
+
+SymbolTable
+filePath -> test.in
+n -> 15
+
+Output
+
+ExecutionStack
+Open(filePath)
+print(n);
+Open(filePath)
+
+SymbolTable
+filePath -> test.in
+n -> 15
+
+Output
+15
+
+ExecutionStack
+print(n);
+Open(filePath)
+Open(filePath)
+
+SymbolTable
+filePath -> test.in
+n -> 15
+
+Output
+15
+
+ExecutionStack
+print(n);
+Open(filePath)
+
+SymbolTable
+filePath -> test.in
+n -> 50
+
+Output
+15
+
+ExecutionStack
+Open(filePath)
+print(n);
+
+SymbolTable
+filePath -> test.in
+n -> 50
+
+Output
+15
+
+ExecutionStack
+Open(filePath)
+
+SymbolTable
+filePath -> test.in
+n -> 50
+
+Output
+15
+50
+
+ExecutionStack
+
+SymbolTable
+filePath -> test.in
+n -> 50
+
+Output
+15
+50
+
+ExecutionStack
+Declare filePath
+filePath = test.in
+Open(filePath)
+Declare n
+Open(filePath)
+print(n);
+Open(filePath)
+print(n);
+Open(filePath)
+
+SymbolTable
+
+FileTable
+
+Output
+
+ExecutionStack
+filePath = test.in
+Open(filePath)
+Declare n
+Open(filePath)
+print(n);
+Open(filePath)
+print(n);
+Open(filePath)
+Declare filePath
+
+SymbolTable
+
+FileTable
+
+Output
+
+ExecutionStack
+filePath = test.in
+Open(filePath)
+Declare n
+Open(filePath)
+print(n);
+Open(filePath)
+print(n);
+Open(filePath)
+
+SymbolTable
+filePath -> 
+
+FileTable
+
+Output
+
+ExecutionStack
+Open(filePath)
+Declare n
+Open(filePath)
+print(n);
+Open(filePath)
+print(n);
+Open(filePath)
+filePath = test.in
+
+SymbolTable
+filePath -> 
+
+FileTable
+
+Output
+
+ExecutionStack
+Open(filePath)
+Declare n
+Open(filePath)
+print(n);
+Open(filePath)
+print(n);
+Open(filePath)
+
+SymbolTable
+filePath -> test.in
+
+FileTable
+
+Output
+
+ExecutionStack
+Declare n
+Open(filePath)
+print(n);
+Open(filePath)
+print(n);
+Open(filePath)
+Open(filePath)
+
+SymbolTable
+filePath -> test.in
+
+FileTable
+
+Output
+
+ExecutionStack
+Declare n
+Open(filePath)
+print(n);
+Open(filePath)
+print(n);
+Open(filePath)
+
+SymbolTable
+filePath -> test.in
+
+FileTable
+test.in -> java.io.BufferedReader@30946e09
+
+Output
+
+ExecutionStack
+Open(filePath)
+print(n);
+Open(filePath)
+print(n);
+Open(filePath)
+Declare n
+
+SymbolTable
+filePath -> test.in
+
+FileTable
+test.in -> java.io.BufferedReader@30946e09
+
+Output
+
+ExecutionStack
+Open(filePath)
+print(n);
+Open(filePath)
+print(n);
+Open(filePath)
+
+SymbolTable
+filePath -> test.in
+n -> 0
+
+FileTable
+test.in -> java.io.BufferedReader@30946e09
+
+Output
+
+ExecutionStack
+print(n);
+Open(filePath)
+print(n);
+Open(filePath)
+Open(filePath)
+
+SymbolTable
+filePath -> test.in
+n -> 0
+
+FileTable
+test.in -> java.io.BufferedReader@30946e09
+
+Output
+
+ExecutionStack
+print(n);
+Open(filePath)
+print(n);
+Open(filePath)
+
+SymbolTable
+filePath -> test.in
+n -> 15
+
+FileTable
+test.in -> java.io.BufferedReader@30946e09
+
+Output
+
+ExecutionStack
+Open(filePath)
+print(n);
+Open(filePath)
+print(n);
+
+SymbolTable
+filePath -> test.in
+n -> 15
+
+FileTable
+test.in -> java.io.BufferedReader@30946e09
+
+Output
+
+ExecutionStack
+Open(filePath)
+print(n);
+Open(filePath)
+
+SymbolTable
+filePath -> test.in
+n -> 15
+
+FileTable
+test.in -> java.io.BufferedReader@30946e09
+
+Output
+15
+
+ExecutionStack
+print(n);
+Open(filePath)
+Open(filePath)
+
+SymbolTable
+filePath -> test.in
+n -> 15
+
+FileTable
+test.in -> java.io.BufferedReader@30946e09
+
+Output
+15
+
+ExecutionStack
+print(n);
+Open(filePath)
+
+SymbolTable
+filePath -> test.in
+n -> 50
+
+FileTable
+test.in -> java.io.BufferedReader@30946e09
+
+Output
+15
+
+ExecutionStack
+Open(filePath)
+print(n);
+
+SymbolTable
+filePath -> test.in
+n -> 50
+
+FileTable
+test.in -> java.io.BufferedReader@30946e09
+
+Output
+15
+
+ExecutionStack
+Open(filePath)
+
+SymbolTable
+filePath -> test.in
+n -> 50
+
+FileTable
+test.in -> java.io.BufferedReader@30946e09
+
+Output
+15
+50
+
+ExecutionStack
+
+SymbolTable
+filePath -> test.in
+n -> 50
+
+FileTable
+
+Output
+15
+50
+

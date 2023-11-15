@@ -6,6 +6,7 @@ import model.expressions.VariableExpression;
 import model.statements.*;
 import model.types.BoolType;
 import model.types.IntType;
+import model.types.StringType;
 import model.values.BoolValue;
 import model.values.IntValue;
 import model.values.StringValue;
@@ -120,13 +121,31 @@ public class Interpreter {
         repository3.add(program3);
         Controller controller3 = new Controller(repository3);
 
-        // int v; v = 2; Print(v);
         IStatement example4 =
                 new CompoundStatement(
-                        new VariableDeclarationStatement("v", new IntType()),
+                        new VariableDeclarationStatement("filePath", new StringType()),
                         new CompoundStatement(
-                                new AssignStatement("v", new ValueExpression(new IntValue(2))),
-                                new PrintStatement(new VariableExpression("v"))
+                                new AssignStatement("filePath", new ValueExpression(new StringValue("test.in"))),
+                                new CompoundStatement(
+                                        new OpenFileForReadStatement(new VariableExpression("filePath")),
+                                        new CompoundStatement(
+                                                new VariableDeclarationStatement("n", new IntType()),
+                                                new CompoundStatement(
+                                                        new ReadFileStatement(new VariableExpression("filePath"), new VariableExpression("n")),
+                                                        new CompoundStatement(
+                                                                new PrintStatement(new VariableExpression("n")),
+                                                                new CompoundStatement(
+                                                                        new ReadFileStatement(new VariableExpression("filePath"), new VariableExpression("n")),
+                                                                        new CompoundStatement(
+                                                                                new PrintStatement(new VariableExpression("n")),
+                                                                                new CloseFileForReadStatement(new VariableExpression("filePath"))
+                                                                        )
+                                                                )
+                                                        )
+                                                )
+                                        )
+                                )
+
                         )
                 );
 
