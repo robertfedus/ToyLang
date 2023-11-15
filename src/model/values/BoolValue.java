@@ -11,6 +11,11 @@ public class BoolValue implements Value {
         this.value = value;
     }
 
+    @Override
+    public boolean equals(Object another) {
+        return another instanceof BoolValue && this.value == ((BoolValue) another).getValue();
+    }
+
     public boolean getValue() {
         return this.value;
     }

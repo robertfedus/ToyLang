@@ -1,0 +1,104 @@
+ExecutionStack
+Declare v
+v = 2
+print(v);
+
+SymbolTable
+
+Output
+
+ExecutionStack
+v = 2
+print(v);
+Declare v
+
+SymbolTable
+
+Output
+
+ExecutionStack
+v = 2
+print(v);
+
+SymbolTable
+v -> 0
+
+Output
+
+ExecutionStack
+print(v);
+v = 2
+
+SymbolTable
+v -> 0
+
+Output
+
+ExecutionStack
+print(v);
+
+SymbolTable
+v -> 2
+
+Output
+
+ExecutionStack
+
+SymbolTable
+v -> 2
+
+Output
+2
+
+ExecutionStack
+Declare v
+v = 2
+print(v);
+
+SymbolTable
+
+Output
+
+ExecutionStack
+v = 2
+print(v);
+Declare v
+
+SymbolTable
+
+Output
+
+ExecutionStack
+v = 2
+print(v);
+
+SymbolTable
+v -> 0
+
+Output
+
+ExecutionStack
+print(v);
+v = 2
+
+SymbolTable
+v -> 0
+
+Output
+
+ExecutionStack
+print(v);
+
+SymbolTable
+v -> 2
+
+Output
+
+ExecutionStack
+
+SymbolTable
+v -> 2
+
+Output
+2
+

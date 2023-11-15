@@ -54,4 +54,9 @@ public class LogicalExpression implements Expression {
             throw new ToyException("Invalid operand.");
         }
     }
+
+    @Override
+    public String toString() {
+        return this.left + " " + this.operator + " " + this.right;
+    }
 }

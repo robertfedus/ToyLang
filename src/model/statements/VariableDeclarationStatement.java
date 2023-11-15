@@ -3,6 +3,7 @@ package model.statements;
 import model.ProgramState;
 import model.exceptions.ToyException;
 import model.types.BoolType;
+import model.types.StringType;
 import model.types.Type;
 import model.types.IntType;
 import model.values.BoolValue;
@@ -22,18 +23,13 @@ public class VariableDeclarationStatement implements IStatement {
     @Override
     public ProgramState execute(ProgramState state) throws ToyException {
         ToyIDictionary<String, Value> symbolTable = state.getSymbolTable();
-
-        if (type.equals(new IntType())) {
-            symbolTable.put(name, new IntValue(0));
-        } else if (type.equals(new BoolType())) {
-            symbolTable.put(name, new BoolValue(false));
-        }
+        symbolTable.put(this.name, this.type.defaultValue());
 
         return state;
     }
 
     @Override
     public String toString() {
-        return "(Decl " + this.name + ")";
+        return "Declare " + this.name;
     }
 }

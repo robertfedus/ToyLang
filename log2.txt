@@ -1,0 +1,208 @@
+ExecutionStack
+Declare a
+Declare b
+a = 2 + 3 * 5
+b = a + 1
+print(b);
+
+SymbolTable
+
+Output
+
+ExecutionStack
+Declare b
+a = 2 + 3 * 5
+b = a + 1
+print(b);
+Declare a
+
+SymbolTable
+
+Output
+
+ExecutionStack
+Declare b
+a = 2 + 3 * 5
+b = a + 1
+print(b);
+
+SymbolTable
+a -> 0
+
+Output
+
+ExecutionStack
+a = 2 + 3 * 5
+b = a + 1
+print(b);
+Declare b
+
+SymbolTable
+a -> 0
+
+Output
+
+ExecutionStack
+a = 2 + 3 * 5
+b = a + 1
+print(b);
+
+SymbolTable
+a -> 0
+b -> 0
+
+Output
+
+ExecutionStack
+b = a + 1
+print(b);
+a = 2 + 3 * 5
+
+SymbolTable
+a -> 0
+b -> 0
+
+Output
+
+ExecutionStack
+b = a + 1
+print(b);
+
+SymbolTable
+a -> 17
+b -> 0
+
+Output
+
+ExecutionStack
+print(b);
+b = a + 1
+
+SymbolTable
+a -> 17
+b -> 0
+
+Output
+
+ExecutionStack
+print(b);
+
+SymbolTable
+a -> 17
+b -> 18
+
+Output
+
+ExecutionStack
+
+SymbolTable
+a -> 17
+b -> 18
+
+Output
+18
+
+ExecutionStack
+Declare a
+Declare b
+a = 2 + 3 * 5
+b = a + 1
+print(b);
+
+SymbolTable
+
+Output
+
+ExecutionStack
+Declare b
+a = 2 + 3 * 5
+b = a + 1
+print(b);
+Declare a
+
+SymbolTable
+
+Output
+
+ExecutionStack
+Declare b
+a = 2 + 3 * 5
+b = a + 1
+print(b);
+
+SymbolTable
+a -> 0
+
+Output
+
+ExecutionStack
+a = 2 + 3 * 5
+b = a + 1
+print(b);
+Declare b
+
+SymbolTable
+a -> 0
+
+Output
+
+ExecutionStack
+a = 2 + 3 * 5
+b = a + 1
+print(b);
+
+SymbolTable
+a -> 0
+b -> 0
+
+Output
+
+ExecutionStack
+b = a + 1
+print(b);
+a = 2 + 3 * 5
+
+SymbolTable
+a -> 0
+b -> 0
+
+Output
+
+ExecutionStack
+b = a + 1
+print(b);
+
+SymbolTable
+a -> 17
+b -> 0
+
+Output
+
+ExecutionStack
+print(b);
+b = a + 1
+
+SymbolTable
+a -> 17
+b -> 0
+
+Output
+
+ExecutionStack
+print(b);
+
+SymbolTable
+a -> 17
+b -> 18
+
+Output
+
+ExecutionStack
+
+SymbolTable
+a -> 17
+b -> 18
+
+Output
+18
+

@@ -23,9 +23,10 @@ public class Controller {
         return currentStatement.execute(state);
     }
     public void allSteps() throws ToyException {
-        ProgramState program = this.repository.getCurrentProgramState(); // repo is the controller field of type MyRepoInterface
-        //here you can display the prg state
-        System.out.println(program);
+        ProgramState program = this.repository.getCurrentProgramState();
+        // Here you can display the prg state
+//        System.out.println(program);
+        this.repository.logProgramState(program);
         while (!program.getExecutionStack().isEmpty()){
             try {
                 this.oneStep(program);
@@ -34,8 +35,9 @@ public class Controller {
             {
                 System.out.println(ex.getMessage());
             }
-            //here you can display the prg state
+            // Here you can display the prg state
+//            System.out.println(program);
+            this.repository.logProgramState(program);
         }
-        System.out.println(program);
     }
 }

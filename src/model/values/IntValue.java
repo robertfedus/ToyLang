@@ -10,6 +10,11 @@ public class IntValue implements Value {
         this.value = value;
     }
 
+    @Override
+    public boolean equals(Object another) {
+        return another instanceof IntValue && this.value == ((IntValue) another).getValue();
+    }
+
     public int getValue() {
         return this.value;
     }

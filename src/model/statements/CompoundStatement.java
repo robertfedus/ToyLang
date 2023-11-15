@@ -28,6 +28,6 @@ public class CompoundStatement implements IStatement {
 //    }
 
     public String toString() {
-        return "(" + this.first.toString() + ";" + this.second.toString() + ")";
+        return this.first.toString() + "\n" + this.second.toString();
     }
 }

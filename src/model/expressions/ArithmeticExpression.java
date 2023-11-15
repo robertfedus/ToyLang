@@ -65,8 +65,8 @@ public class ArithmeticExpression implements Expression {
         return new IntValue(-1);
     }
 
-//    @Override
-//    public String toString() {
-//        return this.left.
-//    }
+    @Override
+    public String toString() {
+        return this.left + " " + this.operator + " " + this.right;
+    }
 }

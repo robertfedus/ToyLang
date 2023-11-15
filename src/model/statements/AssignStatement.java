@@ -20,7 +20,6 @@ public class AssignStatement implements IStatement {
 
     @Override
     public ProgramState execute(ProgramState state) throws ToyException {
-        ToyIStack<IStatement> stack = state.getExecutionStack();
         ToyIDictionary<String, Value> symbolTable = state.getSymbolTable();
 
         if (symbolTable.isDefined(this.name)) {
@@ -42,6 +41,6 @@ public class AssignStatement implements IStatement {
 
     @Override
     public String toString() {
-        return name +"="+ this.expression.toString();
+        return name +" = "+ this.expression.toString();
     }
 }

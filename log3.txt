@@ -1,0 +1,114 @@
+ExecutionStack
+Declare a
+Declare v
+a = true
+(IF(a) THEN(v = 2)ELSE(v = 3))
+print(v);
+
+SymbolTable
+
+Output
+
+ExecutionStack
+Declare v
+a = true
+(IF(a) THEN(v = 2)ELSE(v = 3))
+print(v);
+Declare a
+
+SymbolTable
+
+Output
+
+ExecutionStack
+Declare v
+a = true
+(IF(a) THEN(v = 2)ELSE(v = 3))
+print(v);
+
+SymbolTable
+a -> false
+
+Output
+
+ExecutionStack
+a = true
+(IF(a) THEN(v = 2)ELSE(v = 3))
+print(v);
+Declare v
+
+SymbolTable
+a -> false
+
+Output
+
+ExecutionStack
+a = true
+(IF(a) THEN(v = 2)ELSE(v = 3))
+print(v);
+
+SymbolTable
+a -> false
+v -> 0
+
+Output
+
+ExecutionStack
+(IF(a) THEN(v = 2)ELSE(v = 3))
+print(v);
+a = true
+
+SymbolTable
+a -> false
+v -> 0
+
+Output
+
+ExecutionStack
+(IF(a) THEN(v = 2)ELSE(v = 3))
+print(v);
+
+SymbolTable
+a -> true
+v -> 0
+
+Output
+
+ExecutionStack
+print(v);
+(IF(a) THEN(v = 2)ELSE(v = 3))
+
+SymbolTable
+a -> true
+v -> 0
+
+Output
+
+ExecutionStack
+print(v);
+v = 2
+
+SymbolTable
+a -> true
+v -> 0
+
+Output
+
+ExecutionStack
+print(v);
+
+SymbolTable
+a -> true
+v -> 2
+
+Output
+
+ExecutionStack
+
+SymbolTable
+a -> true
+v -> 2
+
+Output
+2
+

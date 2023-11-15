@@ -3,10 +3,7 @@ package utils.collections;
 import model.exceptions.ReadFromEmptyCollectionException;
 import utils.collections.ToyIStack;
 
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
-import java.util.Stack;
+import java.util.*;
 
 public class ToyStack<T> implements ToyIStack<T> {
     Stack<T> stack;
@@ -42,6 +39,14 @@ public class ToyStack<T> implements ToyIStack<T> {
 
     @Override
     public String toString() {
-        return "stack " + getReverse();
+//        return "stack " + getReverse();
+        StringBuilder result = new StringBuilder();
+
+        for (T currentElement : this.stack) {
+            result.append(currentElement);
+            result.append("\n");
+        }
+
+        return result.toString();
     }
 }
