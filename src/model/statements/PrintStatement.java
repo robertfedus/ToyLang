@@ -17,7 +17,7 @@ public class PrintStatement implements IStatement {
     public ProgramState execute(ProgramState state) throws ToyException {
         ToyIList<Value> output = state.getOutput();
 
-        output.add(this.expression.eval(state.getSymbolTable()));
+        output.add(this.expression.eval(state.getSymbolTable(), state.getHeap()));
 
         return state;
     }

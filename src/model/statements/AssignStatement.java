@@ -1,20 +1,18 @@
 package model.statements;
 
-import model.exceptions.ReadFromEmptyCollectionException;
 import model.exceptions.ToyException;
 import model.expressions.Expression;
 import model.ProgramState;
 import model.values.Value;
 import model.types.Type;
 import utils.collections.ToyIDictionary;
-import utils.collections.ToyIStack;
 
 public class AssignStatement implements IStatement {
-    private final String name;
+    private final String variableName;
     private final Expression expression;
 
     public AssignStatement(String name, Expression expression) {
-        this.name = name;
+        this.variableName = name;
         this.expression = expression;
     }
 
@@ -22,18 +20,18 @@ public class AssignStatement implements IStatement {
     public ProgramState execute(ProgramState state) throws ToyException {
         ToyIDictionary<String, Value> symbolTable = state.getSymbolTable();
 
-        if (symbolTable.isDefined(this.name)) {
-            Value value = this.expression.eval(symbolTable);
+        if (symbolTable.isDefined(this.variableName)) {
+            Value value = this.expression.eval(symbolTable, state.getHeap());
 
-                Type typeId = symbolTable.lookup(this.name).getType();
+                Type typeId = symbolTable.lookup(this.variableName).getType();
 
             if (value.getType().equals(typeId)) {
-                symbolTable.update(this.name, value);
+                symbolTable.update(this.variableName, value);
             } else {
-                throw new ToyException("Declared type of variable " + name + " and type of the assigned expression do not match.");
+                throw new ToyException("Declared type of variable " + variableName + " and type of the assigned expression do not match.");
             }
         } else {
-            throw new ToyException("The used variable " + name + " was not declared before.");
+            throw new ToyException("The used variable " + variableName + " was not declared before.");
         }
 
         return state;
@@ -41,6 +39,6 @@ public class AssignStatement implements IStatement {
 
     @Override
     public String toString() {
-        return name +" = "+ this.expression.toString();
+        return variableName +" = "+ this.expression.toString();
     }
 }

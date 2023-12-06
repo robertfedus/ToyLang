@@ -1,0 +1,368 @@
+ExecutionStack
+Declare v
+new(v, 20)
+Declare a
+new(a, v)
+print(ReadHeap(v));
+print(ReadHeap(ReadHeap(a)) + 5);
+
+SymbolTable
+
+Heap
+
+FileTable
+
+Output
+
+ExecutionStack
+new(v, 20)
+Declare a
+new(a, v)
+print(ReadHeap(v));
+print(ReadHeap(ReadHeap(a)) + 5);
+Declare v
+
+SymbolTable
+
+Heap
+
+FileTable
+
+Output
+
+ExecutionStack
+new(v, 20)
+Declare a
+new(a, v)
+print(ReadHeap(v));
+print(ReadHeap(ReadHeap(a)) + 5);
+Declare v
+
+SymbolTable
+
+Heap
+
+FileTable
+
+Output
+
+ExecutionStack
+new(v, 20)
+Declare a
+new(a, v)
+print(ReadHeap(v));
+print(ReadHeap(ReadHeap(a)) + 5);
+
+SymbolTable
+v -> (0 -> int)
+
+Heap
+
+FileTable
+
+Output
+
+ExecutionStack
+new(v, 20)
+Declare a
+new(a, v)
+print(ReadHeap(v));
+print(ReadHeap(ReadHeap(a)) + 5);
+
+SymbolTable
+v -> (0 -> int)
+
+Heap
+
+FileTable
+
+Output
+
+ExecutionStack
+Declare a
+new(a, v)
+print(ReadHeap(v));
+print(ReadHeap(ReadHeap(a)) + 5);
+new(v, 20)
+
+SymbolTable
+v -> (0 -> int)
+
+Heap
+
+FileTable
+
+Output
+
+ExecutionStack
+Declare a
+new(a, v)
+print(ReadHeap(v));
+print(ReadHeap(ReadHeap(a)) + 5);
+new(v, 20)
+
+SymbolTable
+v -> (0 -> int)
+
+Heap
+
+FileTable
+
+Output
+
+ExecutionStack
+Declare a
+new(a, v)
+print(ReadHeap(v));
+print(ReadHeap(ReadHeap(a)) + 5);
+
+SymbolTable
+v -> (1 -> int)
+
+Heap
+1 -> 20
+
+FileTable
+
+Output
+
+ExecutionStack
+Declare a
+new(a, v)
+print(ReadHeap(v));
+print(ReadHeap(ReadHeap(a)) + 5);
+
+SymbolTable
+v -> (1 -> int)
+
+Heap
+1 -> 20
+
+FileTable
+
+Output
+
+ExecutionStack
+new(a, v)
+print(ReadHeap(v));
+print(ReadHeap(ReadHeap(a)) + 5);
+Declare a
+
+SymbolTable
+v -> (1 -> int)
+
+Heap
+1 -> 20
+
+FileTable
+
+Output
+
+ExecutionStack
+new(a, v)
+print(ReadHeap(v));
+print(ReadHeap(ReadHeap(a)) + 5);
+Declare a
+
+SymbolTable
+v -> (1 -> int)
+
+Heap
+1 -> 20
+
+FileTable
+
+Output
+
+ExecutionStack
+new(a, v)
+print(ReadHeap(v));
+print(ReadHeap(ReadHeap(a)) + 5);
+
+SymbolTable
+a -> (0 -> Reference(int))
+v -> (1 -> int)
+
+Heap
+1 -> 20
+
+FileTable
+
+Output
+
+ExecutionStack
+new(a, v)
+print(ReadHeap(v));
+print(ReadHeap(ReadHeap(a)) + 5);
+
+SymbolTable
+a -> (0 -> Reference(int))
+v -> (1 -> int)
+
+Heap
+1 -> 20
+
+FileTable
+
+Output
+
+ExecutionStack
+print(ReadHeap(v));
+print(ReadHeap(ReadHeap(a)) + 5);
+new(a, v)
+
+SymbolTable
+a -> (0 -> Reference(int))
+v -> (1 -> int)
+
+Heap
+1 -> 20
+
+FileTable
+
+Output
+
+ExecutionStack
+print(ReadHeap(v));
+print(ReadHeap(ReadHeap(a)) + 5);
+new(a, v)
+
+SymbolTable
+a -> (0 -> Reference(int))
+v -> (1 -> int)
+
+Heap
+1 -> 20
+
+FileTable
+
+Output
+
+ExecutionStack
+print(ReadHeap(v));
+print(ReadHeap(ReadHeap(a)) + 5);
+
+SymbolTable
+a -> (2 -> Reference(int))
+v -> (1 -> int)
+
+Heap
+1 -> 20
+2 -> (1 -> int)
+
+FileTable
+
+Output
+
+ExecutionStack
+print(ReadHeap(v));
+print(ReadHeap(ReadHeap(a)) + 5);
+
+SymbolTable
+a -> (2 -> Reference(int))
+v -> (1 -> int)
+
+Heap
+1 -> 20
+2 -> (1 -> int)
+
+FileTable
+
+Output
+
+ExecutionStack
+print(ReadHeap(ReadHeap(a)) + 5);
+print(ReadHeap(v));
+
+SymbolTable
+a -> (2 -> Reference(int))
+v -> (1 -> int)
+
+Heap
+1 -> 20
+2 -> (1 -> int)
+
+FileTable
+
+Output
+
+ExecutionStack
+print(ReadHeap(ReadHeap(a)) + 5);
+print(ReadHeap(v));
+
+SymbolTable
+a -> (2 -> Reference(int))
+v -> (1 -> int)
+
+Heap
+1 -> 20
+2 -> (1 -> int)
+
+FileTable
+
+Output
+
+ExecutionStack
+print(ReadHeap(ReadHeap(a)) + 5);
+
+SymbolTable
+a -> (2 -> Reference(int))
+v -> (1 -> int)
+
+Heap
+1 -> 20
+2 -> (1 -> int)
+
+FileTable
+
+Output
+20
+
+ExecutionStack
+print(ReadHeap(ReadHeap(a)) + 5);
+
+SymbolTable
+a -> (2 -> Reference(int))
+v -> (1 -> int)
+
+Heap
+1 -> 20
+2 -> (1 -> int)
+
+FileTable
+
+Output
+20
+
+ExecutionStack
+
+SymbolTable
+a -> (2 -> Reference(int))
+v -> (1 -> int)
+
+Heap
+1 -> 20
+2 -> (1 -> int)
+
+FileTable
+
+Output
+20
+25
+
+ExecutionStack
+
+SymbolTable
+a -> (2 -> Reference(int))
+v -> (1 -> int)
+
+Heap
+1 -> 20
+2 -> (1 -> int)
+
+FileTable
+
+Output
+20
+25
+

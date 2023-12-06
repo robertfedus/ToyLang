@@ -4,6 +4,7 @@ import model.exceptions.ToyException;
 import model.exceptions.VariableNotDefinedException;
 import model.values.Value;
 import utils.collections.ToyIDictionary;
+import utils.collections.ToyIHeap;
 
 public class VariableExpression implements Expression {
    private final String name;
@@ -13,7 +14,7 @@ public class VariableExpression implements Expression {
     }
 
     @Override
-    public Value eval(ToyIDictionary<String,Value> symbolTable) throws ToyException {
+    public Value eval(ToyIDictionary<String,Value> symbolTable, ToyIHeap<Value> heap) throws ToyException {
         if (!symbolTable.isDefined(this.name)) {
             throw new VariableNotDefinedException(this.name);
         }

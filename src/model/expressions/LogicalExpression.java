@@ -5,6 +5,7 @@ import model.types.BoolType;
 import model.values.BoolValue;
 import model.values.Value;
 import utils.collections.ToyIDictionary;
+import utils.collections.ToyIHeap;
 
 import java.util.Objects;
 
@@ -20,12 +21,12 @@ public class LogicalExpression implements Expression {
     }
 
     @Override
-    public Value eval(ToyIDictionary<String, Value> symbolTable) throws ToyException {
+    public Value eval(ToyIDictionary<String, Value> symbolTable, ToyIHeap<Value> heap) throws ToyException {
         Value leftValue, rightValue;
-        leftValue = left.eval(symbolTable);
+        leftValue = left.eval(symbolTable, heap);
 
         if(leftValue.getType().equals(new BoolType())) {
-            rightValue = right.eval(symbolTable);
+            rightValue = right.eval(symbolTable, heap);
 
             if(rightValue.getType().equals(new BoolType())) {
                 BoolValue booleanLeftValue = (BoolValue)leftValue;

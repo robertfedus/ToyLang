@@ -39,7 +39,7 @@ public class ReadFileStatement implements IStatement {
             throw new ToyException("Variable " + variableNameString + " is not of type int.");
         }
 
-        Value filePathExpressionValue = this.filePathExpression.eval(symbolTable);
+        Value filePathExpressionValue = this.filePathExpression.eval(symbolTable, state.getHeap());
 
         if (!filePathExpressionValue.getType().equals(new StringType())) {
             throw new ToyException("File name is not StringValue.");

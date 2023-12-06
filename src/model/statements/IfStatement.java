@@ -20,7 +20,7 @@ public class IfStatement implements IStatement {
     @Override
     public ProgramState execute(ProgramState state) throws ToyException {
         ToyIStack<IStatement> stack = state.getExecutionStack();
-        BoolValue expressionValue = (BoolValue)this.expression.eval(state.getSymbolTable());
+        BoolValue expressionValue = (BoolValue)this.expression.eval(state.getSymbolTable(), state.getHeap());
 
         if (expressionValue.getValue()) {
             stack.push(thenStatement);

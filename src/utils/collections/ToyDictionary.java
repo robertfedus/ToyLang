@@ -8,10 +8,13 @@ import java.util.Iterator;
 import java.util.Map;
 
 public class ToyDictionary<K,V> implements ToyIDictionary<K,V> {
-
     private Map<K,V> dictionary;
     public ToyDictionary() {
         this.dictionary = new HashMap<>();
+    }
+    @Override
+    public Map<K, V> getContent() {
+        return this.dictionary;
     }
     @Override
     public boolean isDefined(K key) {

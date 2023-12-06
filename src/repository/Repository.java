@@ -5,11 +5,7 @@ import model.exceptions.ToyException;
 import model.statements.IStatement;
 import model.values.StringValue;
 import model.values.Value;
-import utils.collections.ToyIDictionary;
-import utils.collections.ToyIList;
-import utils.collections.ToyIStack;
-import utils.collections.ToyStack;
-import utils.collections.ToyList;
+import utils.collections.*;
 
 import java.io.BufferedReader;
 import java.io.FileWriter;
@@ -59,6 +55,7 @@ public class Repository implements IRepository{
 
             ToyIStack<IStatement> executionStack = state.getExecutionStack();
             ToyIDictionary<String, Value> symbolTable = state.getSymbolTable();
+            ToyIHeap<Value> heap = state.getHeap();
             ToyIDictionary<StringValue, BufferedReader> fileTable = state.getFileTable();
             ToyIList<Value> output = state.getOutput();
 
@@ -67,6 +64,9 @@ public class Repository implements IRepository{
 
             printWriter.println("SymbolTable");
             printWriter.println(symbolTable);
+
+            printWriter.println("Heap");
+            printWriter.println(heap);
 
             printWriter.println("FileTable");
             printWriter.println(fileTable);

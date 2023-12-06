@@ -6,6 +6,7 @@ import utils.collections.ToyIDictionary;
 import model.exceptions.ToyException;
 import model.types.IntType;
 import model.values.IntValue;
+import utils.collections.ToyIHeap;
 
 public class ArithmeticExpression implements Expression {
     Expression left;
@@ -19,13 +20,13 @@ public class ArithmeticExpression implements Expression {
     }
 
     @Override
-    public Value eval(ToyIDictionary<String,Value> symbolTable) throws ToyException {
+    public Value eval(ToyIDictionary<String,Value> symbolTable, ToyIHeap<Value> heap) throws ToyException {
         Value leftValue, rightValue;
 
-        leftValue = this.left.eval(symbolTable);
+        leftValue = this.left.eval(symbolTable, heap);
 
         if (leftValue.getType().equals(new IntType())) {
-            rightValue = this.right.eval(symbolTable);
+            rightValue = this.right.eval(symbolTable, heap);
 
             if (rightValue.getType().equals(new IntType())) {
                 IntValue intLeft = (IntValue)leftValue;

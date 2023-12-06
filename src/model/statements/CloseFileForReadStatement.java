@@ -20,7 +20,7 @@ public class CloseFileForReadStatement implements IStatement {
     @Override
     public ProgramState execute(ProgramState state) throws ToyException {
         ToyIDictionary<String, Value> symbolTable = state.getSymbolTable();
-        Value expressionValue = this.expression.eval(symbolTable);
+        Value expressionValue = this.expression.eval(symbolTable, state.getHeap());
 
         if (!expressionValue.getType().equals(new StringType())) {
             throw new ToyException("Expression was not evaluated to StringValue.");
