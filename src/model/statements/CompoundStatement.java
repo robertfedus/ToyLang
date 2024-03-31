@@ -2,6 +2,8 @@ package model.statements;
 
 import model.exceptions.ToyException;
 import model.ProgramState;
+import model.types.Type;
+import utils.collections.ToyIDictionary;
 import utils.collections.ToyIStack;
 
 public class CompoundStatement implements IStatement {
@@ -21,11 +23,16 @@ public class CompoundStatement implements IStatement {
         stack.push(this.second);
         stack.push(first);
 
-        return state;
+        return null;
     }
 //    public IStatement deepcopy() {
 //        return new CompoundStatement(this.expression.deepcopy());
 //    }
+
+    @Override
+    public ToyIDictionary<String, Type> typecheck(ToyIDictionary<String, Type> typeEnvironment) throws ToyException {
+        return second.typecheck(first.typecheck(typeEnvironment));
+    }
 
     public String toString() {
         return this.first.toString() + "\n" + this.second.toString();

@@ -1,6 +1,7 @@
 package model.expressions;
 
 import model.exceptions.DivisionByZeroException;
+import model.types.Type;
 import model.values.Value;
 import utils.collections.ToyIDictionary;
 import model.exceptions.ToyException;
@@ -64,6 +65,24 @@ public class ArithmeticExpression implements Expression {
         }
 
         return new IntValue(-1);
+    }
+
+    @Override
+    public Type typecheck(ToyIDictionary<String, Type> typeEnvironment) throws ToyException {
+        Type type1 = left.typecheck(typeEnvironment);
+        Type type2 = right.typecheck(typeEnvironment);
+
+        if (type1.equals(new IntType())) {
+            if (type2.equals(new IntType())) {
+                return new IntType();
+            }
+            else {
+                throw new ToyException("Types of operands do not match in " + this.toString());
+            }
+        }
+        else {
+            throw new ToyException("Types of operands do not match in " + this.toString());
+        }
     }
 
     @Override

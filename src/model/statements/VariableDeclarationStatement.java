@@ -20,7 +20,18 @@ public class VariableDeclarationStatement implements IStatement {
         ToyIDictionary<String, Value> symbolTable = state.getSymbolTable();
         symbolTable.put(this.variableName, this.type.defaultValue());
 
-        return state;
+        return null;
+    }
+
+    @Override
+    public ToyIDictionary<String, Type> typecheck(ToyIDictionary<String, Type> typeEnvironment) throws ToyException {
+        if (typeEnvironment.isDefined(variableName)) {
+            throw new ToyException("Variable " + variableName + " already defined");
+        }
+
+        typeEnvironment.update(variableName, type);
+
+        return typeEnvironment;
     }
 
     @Override

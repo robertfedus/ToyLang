@@ -32,13 +32,23 @@ public class Repository implements IRepository{
 //        }
     }
 
+//    @Override
+//    public ProgramState getCurrentProgramState() {
+//        try {
+//            return this.programStateList.get(0);
+//        } catch (IndexOutOfBoundsException indexOutOfBoundsException) {
+//            return null;
+//        }
+//    }
+
     @Override
-    public ProgramState getCurrentProgramState() {
-        try {
-            return this.programStateList.get(0);
-        } catch (IndexOutOfBoundsException indexOutOfBoundsException) {
-            return null;
-        }
+    public List<ProgramState> getProgramStateList() {
+        return this.programStateList;
+    }
+
+    @Override
+    public void setProgramStateList(List<ProgramState> newProgramStateList) {
+        this.programStateList = newProgramStateList;
     }
 
     @Override
@@ -61,6 +71,9 @@ public class Repository implements IRepository{
 
             printWriter.println("ExecutionStack");
             printWriter.println(executionStack);
+
+            printWriter.println("ID = " + state.getId());
+
 
             printWriter.println("SymbolTable");
             printWriter.println(symbolTable);

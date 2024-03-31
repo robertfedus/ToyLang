@@ -1,7 +1,9 @@
 package model.expressions;
 
 import model.exceptions.ToyException;
+import model.types.BoolType;
 import model.types.IntType;
+import model.types.Type;
 import model.values.BoolValue;
 import model.values.IntValue;
 import model.values.Value;
@@ -59,6 +61,24 @@ public class RelationalExpression implements Expression {
         }
 
         return new BoolValue(false);
+    }
+
+    @Override
+    public Type typecheck(ToyIDictionary<String, Type> typeEnvironment) throws ToyException {
+        Type type1 = left.typecheck(typeEnvironment);
+        Type type2 = right.typecheck(typeEnvironment);
+
+        if (type1.equals(new IntType())) {
+            if (type2.equals(new IntType())) {
+                return new BoolType();
+            }
+            else {
+                throw new ToyException("Types of operands do not match in " + this.toString());
+            }
+        }
+        else {
+            throw new ToyException("Types of operands do not match in " + this.toString());
+        }
     }
 
     @Override

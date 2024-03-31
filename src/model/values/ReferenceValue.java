@@ -25,8 +25,12 @@ public class ReferenceValue implements Value {
     }
 
     @Override
+    public Value deepCopy() {
+        return new ReferenceValue(this.address, this.locationType);
+    }
+
+    @Override
     public String toString() {
         return "(" + address + " -> " + locationType + ")";
     }
-
 }

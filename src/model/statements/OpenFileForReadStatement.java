@@ -4,6 +4,7 @@ import model.ProgramState;
 import model.exceptions.ToyException;
 import model.expressions.Expression;
 import model.types.StringType;
+import model.types.Type;
 import model.values.StringValue;
 import model.values.Value;
 import utils.collections.ToyIDictionary;
@@ -46,7 +47,19 @@ public class OpenFileForReadStatement implements IStatement {
         }
 
 
-        return state;
+        return null;
+    }
+
+    @Override
+    public ToyIDictionary<String, Type> typecheck(ToyIDictionary<String, Type> typeEnvironment) throws ToyException {
+        Type expType = expression.typecheck(typeEnvironment);
+
+        if (expType.equals(new StringType())) {
+            return typeEnvironment;
+        }
+        else {
+            throw new ToyException("Expression " + this.toString() + " is not a string");
+        }
     }
 
     @Override

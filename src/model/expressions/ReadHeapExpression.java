@@ -1,6 +1,8 @@
 package model.expressions;
 
 import model.exceptions.ToyException;
+import model.types.ReferenceType;
+import model.types.Type;
 import model.values.ReferenceValue;
 import model.values.Value;
 import utils.collections.ToyIDictionary;
@@ -28,6 +30,18 @@ public class ReadHeapExpression implements Expression {
         }
 
         return heap.get(referenceValue.getAddress());
+    }
+
+    @Override
+    public Type typecheck(ToyIDictionary<String, Type> typeEnvironment) throws ToyException {
+        Type type = expression.typecheck(typeEnvironment);
+        if (type instanceof ReferenceType) {
+            ReferenceType refType = (ReferenceType) type;
+            return refType.getInner();
+        }
+        else {
+            throw new ToyException("Expression is not of a reference type in " + this.toString());
+        }
     }
 
     @Override

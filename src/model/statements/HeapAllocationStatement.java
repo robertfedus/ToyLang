@@ -4,11 +4,14 @@ import model.ProgramState;
 import model.exceptions.ToyException;
 import model.expressions.Expression;
 import model.types.ReferenceType;
+import model.types.Type;
 import model.values.ReferenceValue;
 import model.values.Value;
 import utils.collections.ToyIDictionary;
 import utils.collections.ToyIHeap;
 import utils.collections.ToyIStack;
+
+import java.sql.Ref;
 
 public class HeapAllocationStatement implements IStatement {
     String variableName;
@@ -47,7 +50,25 @@ public class HeapAllocationStatement implements IStatement {
         state.setHeap(heap);
         state.setExecutionStack(stack);
 
-        return state;
+        return null;
+    }
+
+    @Override
+    public ToyIDictionary<String, Type> typecheck(ToyIDictionary<String, Type> typeEnvironment) throws ToyException {
+        if (!typeEnvironment.isDefined(variableName)) {
+            throw new ToyException("Variable " + variableName + " is undefined");
+        }
+        else {
+            Type variableType = typeEnvironment.lookup(variableName);
+            Type expressionType = expression.typecheck(typeEnvironment);
+
+            if (variableType.equals(new ReferenceType(expressionType))) {
+                return typeEnvironment;
+            }
+            else {
+                throw new ToyException("Types of operands do not match in " + this.toString());
+            }
+        }
     }
 
     @Override

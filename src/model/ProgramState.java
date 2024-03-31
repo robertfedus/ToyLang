@@ -1,5 +1,7 @@
 package model;
 
+import model.exceptions.EmptyExecutionStackException;
+import model.exceptions.ToyException;
 import model.statements.IStatement;
 import model.values.StringValue;
 import model.values.Value;
@@ -12,6 +14,8 @@ import java.io.BufferedReader;
 import java.nio.Buffer;
 
 public class ProgramState {
+    private static int id;
+    private static int freeId = 0;
     private ToyIStack<IStatement> executionStack;
     private ToyIDictionary<String, Value> symbolTable;
     private ToyIHeap<Value> heap;
@@ -31,12 +35,23 @@ public class ProgramState {
         this.heap = heap;
         this.fileTable = fileTable;
         this.output = output;
+        id = getNewProgramStateId();
         //originalProgram=deepCopy(prg);//recreate the entire original prg
         executionStack.push(program);
     }
 
+    public int getId() {
+        return id;
+    }
+
     public ToyIStack<IStatement> getExecutionStack() {
         return executionStack;
+    }
+
+    public static synchronized int getNewProgramStateId() {
+        ++freeId;
+
+        return freeId;
     }
 
     public void setExecutionStack(ToyIStack<IStatement> executionStack) {
@@ -83,9 +98,22 @@ public class ProgramState {
         this.originalProgram = originalProgram;
     }
 
+    public boolean isNotCompleted() {
+        return !this.executionStack.isEmpty();
+    }
+
+    public ProgramState oneStep() throws ToyException {
+        if (this.executionStack.isEmpty()) throw new EmptyExecutionStackException();
+
+        IStatement currentStatement = this.executionStack.pop();
+
+        return currentStatement.execute(this);
+    }
+
     @Override
     public String toString() {
         return "ProgramState{" +
+                "id=" + id +
                 "exeStack=" + this.executionStack +
                 ", symTable=" + this.symbolTable +
                 ", out=" + this.output +

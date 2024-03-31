@@ -7,6 +7,7 @@ import model.expressions.Expression;
 import model.expressions.VariableExpression;
 import model.types.IntType;
 import model.types.StringType;
+import model.types.Type;
 import model.values.IntValue;
 import model.values.StringValue;
 import model.values.Value;
@@ -67,7 +68,26 @@ public class ReadFileStatement implements IStatement {
             throw new ToyException(e.getMessage());
         }
 
-        return state;
+        return null;
+    }
+
+    @Override
+    public ToyIDictionary<String, Type> typecheck(ToyIDictionary<String, Type> typeEnvironment) throws ToyException {
+        if (typeEnvironment.isDefined(((VariableExpression) variableNameExpression).getName())) {
+            Type variableType = typeEnvironment.lookup(((VariableExpression) variableNameExpression).getName());
+            Type expType = filePathExpression.typecheck(typeEnvironment);
+
+            if (!variableType.equals(new IntType())) {
+                throw new ToyException("Variable " + this.toString() + " is not an integer");
+            }
+            if (!expType.equals(new StringType())) {
+                throw new ToyException("File name in " + this.toString() + " is not a string");
+            }
+            return typeEnvironment;
+        }
+        else {
+            throw new ToyException("Variable " + (((VariableExpression) variableNameExpression).getName()) + " is undefined");
+        }
     }
 
     @Override

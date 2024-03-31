@@ -2,6 +2,7 @@ package model.expressions;
 
 import model.exceptions.ToyException;
 import model.types.BoolType;
+import model.types.Type;
 import model.values.BoolValue;
 import model.values.Value;
 import utils.collections.ToyIDictionary;
@@ -53,6 +54,24 @@ public class LogicalExpression implements Expression {
         }
         else {
             throw new ToyException("Invalid operand.");
+        }
+    }
+
+    @Override
+    public Type typecheck(ToyIDictionary<String, Type> typeEnvironment) throws ToyException {
+        Type type1 = left.typecheck(typeEnvironment);
+        Type type2 = right.typecheck(typeEnvironment);
+
+        if (type1.equals(new BoolType())) {
+            if (type2.equals(new BoolType())) {
+                return new BoolType();
+            }
+            else {
+                throw new ToyException("Types of operands do not match in " + this.toString());
+            }
+        }
+        else {
+            throw new ToyException("Types of operands do not match in " + this.toString());
         }
     }
 

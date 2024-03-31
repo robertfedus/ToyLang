@@ -1,21 +1,16 @@
 import controller.Controller;
 import model.ProgramState;
+import model.exceptions.ToyException;
 import model.expressions.*;
 import model.statements.*;
-import model.types.BoolType;
-import model.types.IntType;
-import model.types.ReferenceType;
-import model.types.StringType;
+import model.types.*;
 import model.values.BoolValue;
 import model.values.IntValue;
 import model.values.StringValue;
 import model.values.Value;
 import repository.IRepository;
 import repository.Repository;
-import utils.collections.ToyDictionary;
-import utils.collections.ToyHeap;
-import utils.collections.ToyStack;
-import utils.collections.ToyList;
+import utils.collections.*;
 import view.ExitCommand;
 import view.TextMenu;
 import view.RunExample;
@@ -23,7 +18,7 @@ import view.RunExample;
 import java.io.BufferedReader;
 
 public class Interpreter {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws ToyException {
         // int v; v = 2; Print(v);
         IStatement example1 =
                 new CompoundStatement(
@@ -33,6 +28,7 @@ public class Interpreter {
                                 new PrintStatement(new VariableExpression("v"))
                         )
                 );
+        example1.typecheck(new ToyDictionary<String, Type>());
 
         ProgramState program1 = new ProgramState(
                 new ToyStack<>(),
@@ -75,6 +71,7 @@ public class Interpreter {
                                 )
                         )
                 );
+        example2.typecheck(new ToyDictionary<String, Type>());
 
         ProgramState program2 = new ProgramState(
                 new ToyStack<>(),
@@ -110,6 +107,7 @@ public class Interpreter {
                                 )
                         )
                 );
+        example3.typecheck(new ToyDictionary<String, Type>());
 
         ProgramState program3 = new ProgramState(
                 new ToyStack<>(),
@@ -151,6 +149,7 @@ public class Interpreter {
 
                         )
                 );
+        example4.typecheck(new ToyDictionary<String, Type>());
 
         ProgramState program4 = new ProgramState(
                 new ToyStack<>(),
@@ -185,6 +184,7 @@ public class Interpreter {
                     )
                 )
             );
+        example5.typecheck(new ToyDictionary<String, Type>());
 
         ProgramState program5 = new ProgramState(
                 new ToyStack<>(),
@@ -219,6 +219,7 @@ public class Interpreter {
                                 )
                         )
                 );
+        example6.typecheck(new ToyDictionary<String, Type>());
 
         ProgramState program6 = new ProgramState(
                 new ToyStack<>(),
@@ -250,6 +251,7 @@ public class Interpreter {
                                 )
                         )
                 );
+        example7.typecheck(new ToyDictionary<String, Type>());
 
         ProgramState program7 = new ProgramState(
                 new ToyStack<>(),
@@ -282,6 +284,7 @@ public class Interpreter {
                                 )
                         )
                 );
+        example8.typecheck(new ToyDictionary<String, Type>());
 
         ProgramState program8 = new ProgramState(
                 new ToyStack<>(),
@@ -315,6 +318,7 @@ public class Interpreter {
                                 )
                         )
                 );
+        example9.typecheck(new ToyDictionary<String, Type>());
 
         ProgramState program9 = new ProgramState(
                 new ToyStack<>(),
@@ -329,6 +333,47 @@ public class Interpreter {
         repository9.add(program9);
         Controller controller9 = new Controller(repository9);
 
+        IStatement example10 =
+                new CompoundStatement(
+                        new VariableDeclarationStatement("v",new IntType()),
+                        new CompoundStatement(
+                                new VariableDeclarationStatement("a",new ReferenceType(new IntType())),
+                                new CompoundStatement(
+                                        new AssignStatement("v",new ValueExpression(new IntValue(10))),
+                                        new CompoundStatement(
+                                                new HeapAllocationStatement("a",new ValueExpression(new IntValue(22))),
+                                                new CompoundStatement
+                                                        (new ForkStatement(
+                                                                new CompoundStatement(
+                                                                        new WriteHeapStatement("a", new ValueExpression(new IntValue(30))),
+                                                                        new CompoundStatement(
+                                                                                new AssignStatement("v",new ValueExpression(new IntValue(32))),
+                                                                                new CompoundStatement(
+                                                                                        new PrintStatement(new VariableExpression("v")),new PrintStatement(new ReadHeapExpression(new VariableExpression("a")))
+                                                                        )
+                                                                )
+                                                        )),
+                                                        new CompoundStatement(new PrintStatement(new VariableExpression("v")),new PrintStatement(new ReadHeapExpression(new VariableExpression("a"))))
+                                                )
+                                        )
+                                )
+                        )
+                );
+        example10.typecheck(new ToyDictionary<String, Type>());
+
+        ProgramState program10 = new ProgramState(
+                new ToyStack<>(),
+                new ToyDictionary<String, Value>(),
+                new ToyHeap<Value>(),
+                new ToyDictionary<StringValue, BufferedReader>(),
+                new ToyList<Value>(),
+                example10
+        );
+
+        IRepository repository10 = new Repository("log10.txt");
+        repository10.add(program10);
+        Controller controller10 = new Controller(repository10);
+
         TextMenu menu = new TextMenu();
 
         menu.addCommand(new ExitCommand("0", "exit"));
@@ -340,7 +385,8 @@ public class Interpreter {
         menu.addCommand(new RunExample("6", example6.toString(), controller6));
         menu.addCommand(new RunExample("7", example7.toString(), controller7));
         menu.addCommand(new RunExample("8", example8.toString(), controller8));
-        menu.addCommand(new RunExample("9", example8.toString(), controller9));
+        menu.addCommand(new RunExample("9", example9.toString(), controller9));
+        menu.addCommand(new RunExample("10", example10.toString(), controller10));
 
         menu.show();
     }

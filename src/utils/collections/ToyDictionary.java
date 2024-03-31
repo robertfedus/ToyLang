@@ -16,6 +16,12 @@ public class ToyDictionary<K,V> implements ToyIDictionary<K,V> {
     public Map<K, V> getContent() {
         return this.dictionary;
     }
+
+    @Override
+    public void setContent(Map<K, V> content) {
+        dictionary = content;
+    }
+
     @Override
     public boolean isDefined(K key) {
         return this.dictionary.containsKey(key);
@@ -63,5 +69,16 @@ public class ToyDictionary<K,V> implements ToyIDictionary<K,V> {
         }
 
         return result.toString();
+    }
+
+    @Override
+    public ToyIDictionary<K, V> deepCopy() {
+        HashMap<K, V> newMap = new HashMap<K, V>(dictionary);
+
+        ToyDictionary<K, V> newDictionary = new ToyDictionary<>();
+
+        newDictionary.setContent(newMap);
+
+        return newDictionary;
     }
 }

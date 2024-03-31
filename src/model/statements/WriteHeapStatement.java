@@ -4,6 +4,7 @@ import model.ProgramState;
 import model.exceptions.ToyException;
 import model.expressions.Expression;
 import model.types.ReferenceType;
+import model.types.Type;
 import model.values.ReferenceValue;
 import model.values.Value;
 import utils.collections.ToyIDictionary;
@@ -46,7 +47,26 @@ public class WriteHeapStatement implements IStatement {
         int address = referenceValue.getAddress();
         heap.update(address, value);
 
-        return state;
+        return null;
+    }
+
+    @Override
+    public ToyIDictionary<String, Type> typecheck(ToyIDictionary<String, Type> typeEnvironment) throws ToyException {
+        if (typeEnvironment.isDefined(variableName)) {
+            Type variableType = typeEnvironment.lookup(variableName);
+            Type expType = expression.typecheck(typeEnvironment);
+
+            if (!(variableType instanceof ReferenceType)) {
+                throw new ToyException("File name in " + this.toString() + " is not a string");
+            }
+            if (!variableType.equals(new ReferenceType(expType))) {
+                throw new ToyException("Types of operands do not match in " + this.toString());
+            }
+            return typeEnvironment;
+        }
+        else {
+            throw new ToyException("Variable " + variableName + " is undefined");
+        }
     }
 
     @Override

@@ -3,7 +3,10 @@ package model.statements;
 import model.ProgramState;
 import model.exceptions.ToyException;
 import model.expressions.Expression;
+import model.types.BoolType;
+import model.types.Type;
 import model.values.BoolValue;
+import utils.collections.ToyIDictionary;
 import utils.collections.ToyIStack;
 
 public class IfStatement implements IStatement {
@@ -29,7 +32,21 @@ public class IfStatement implements IStatement {
             stack.push(elseStatement);
         }
 
-        return state;
+        return null;
+    }
+
+    @Override
+    public ToyIDictionary<String, Type> typecheck(ToyIDictionary<String, Type> typeEnvironment) throws ToyException {
+        Type expressionType = expression.typecheck(typeEnvironment);
+
+        if (expressionType.equals(new BoolType())) {
+            thenStatement.typecheck(typeEnvironment.deepCopy());
+            elseStatement.typecheck(typeEnvironment.deepCopy());
+            return typeEnvironment;
+        }
+        else {
+            throw new ToyException("Statement " + this.toString() + " is not a boolean");
+        }
     }
 
     @Override

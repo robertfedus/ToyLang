@@ -4,6 +4,7 @@ import model.ProgramState;
 import model.exceptions.ToyException;
 import model.expressions.Expression;
 import model.types.BoolType;
+import model.types.Type;
 import model.values.BoolValue;
 import model.values.Value;
 import utils.collections.ToyIDictionary;
@@ -35,7 +36,20 @@ public class WhileStatement implements IStatement {
             stack.push(statement);
         }
 
-        return state;
+        return null;
+    }
+
+    @Override
+    public ToyIDictionary<String, Type> typecheck(ToyIDictionary<String, Type> typeEnvironment) throws ToyException {
+        Type expType = exp.typecheck(typeEnvironment);
+
+        if (expType.equals(new BoolType())) {
+            statement.typecheck(typeEnvironment.deepCopy());
+            return typeEnvironment;
+        }
+        else {
+            throw new ToyException("Statement in " + this.toString() + " is not a boolean");
+        }
     }
 
     @Override
